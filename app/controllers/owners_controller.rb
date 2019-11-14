@@ -1,24 +1,25 @@
 class OwnersController < ApplicationController
     def index 
         @owners = Owner.all 
-        render @owners 
+        render json: @owners
     end 
     def show 
         @owner = Owner.find_by(id: params[:id])
-        render @owner
+        render json: @owner
     end 
     def new 
         @owner = Owner.new
     end 
     def create 
         @owner = Owner.create!(owner_params)
-        render @owner
+        render json: @owner
     end 
     def edit 
         @owner = Owner.find_by(id: params[:id])
     end
     def update 
         @owner = Owner.update(owner_params)
+        render json: @owner
     end 
     def delete 
         @owner = Owner.find_by(id: params[:id])
